@@ -13,8 +13,8 @@ function init() {
 	stage.autoClear = false;
 	stage.enableDOMEvents(true);
 
-  canvas.width = 1280;
-  canvas.height = 720;
+  canvas.width = 1200;
+  canvas.height = 675;
 	createjs.Touch.enable(stage);
 	createjs.Ticker.framerate = 24;
 

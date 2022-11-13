@@ -1,10 +1,14 @@
 html, body {
   height: 100%;
   width: 100%;
+  background: #D9C387;
 }
 #canvas {
-  /*margin: 0 auto;*/
+  margin: 0 auto;
   display: block;
-  border: 1px solid #ccc;
-
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 10px;
+  background: url("/images/bg.gif");
+  box-shadow: 0px 0px 10px rgb(0,0,0);
+  
 }
