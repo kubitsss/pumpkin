@@ -4,6 +4,9 @@ html, body {
 
 }
 
+body {
+  cursor: url("images/knifesmall.png"), not-allowed;
+}
 /*
 body{text-align: center;background: #f2f6f8;}
 
@@ -55,4 +58,8 @@ body{text-align: center;background: #f2f6f8;}
     position:absolute;
     z-index: 20;
     margin: 0 auto;
+}
+
+button {
+
 }
