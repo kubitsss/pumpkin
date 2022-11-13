@@ -1,11 +1,12 @@
 var canvas, stage;
 var drawingCanvas;
+var image;
 var oldPt;
 var oldMidPt;
 var index;
 
 function init() {
-	canvas = document.getElementById("canvas");
+	canvas = document.getElementById("gameCanvas");
 	index = 0;
   
 	//check to see if we are running in a browser with touch support
@@ -17,17 +18,26 @@ function init() {
   canvas.height = 675;
 	createjs.Touch.enable(stage);
 	createjs.Ticker.framerate = 24;
-
-	drawingCanvas = new createjs.Shape();
+	
+  drawingCanvas = new createjs.Shape();
 
 	stage.addEventListener("stagemousedown", handleMouseDown);
 	stage.addEventListener("stagemouseup", handleMouseUp);
 
+image = new Image();
+ image.onload = handleImgLoad();
+ image.src = 'images/big_pumpkin.png';
 
-	stage.addChild(drawingCanvas);
+  
+stage.addChild(drawingCanvas);
 	stage.update();
+
 }
 
+function handleImgLoad(){
+ bitmap = new createjs.Bitmap(image);
+ stage.addChild(bitmap, drawingCanvas);
+}
 function handleMouseDown(event) {
 	if (!event.primary) { return; }
 	color = "#000000"
@@ -42,7 +52,7 @@ function handleMouseMove(event) {
 	if (!event.primary) { return; }
 	var midPt = new createjs.Point(oldPt.x + stage.mouseX >> 1, oldPt.y + stage.mouseY >> 1);
 
-	drawingCanvas.graphics.clear().setStrokeStyle('15', 'round', 'round').beginStroke("black").moveTo(midPt.x, midPt.y).curveTo(oldPt.x, oldPt.y, oldMidPt.x, oldMidPt.y);
+	drawingCanvas.graphics.setStrokeStyle('15', 'round', 'round').beginStroke("black").moveTo(midPt.x, midPt.y).curveTo(oldPt.x, oldPt.y, oldMidPt.x, oldMidPt.y);
 
 	oldPt.x = stage.mouseX;
 	oldPt.y = stage.mouseY;
